@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <meta charset="UTF-8">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script>
+            url="http://inspirobot.me/api?generate=true";
+            console.log(url);
+            img= new Image();
+            $(document).ready(function(){
+                for (var i = 0; i < 10; i++) {
+                    $.get(url,function(imgUrl){
+                        imgUrlHD = [imgUrl.slice(0,imgUrl.length-4),"hd",imgUrl.slice(imgUrl.length-4)].join("");
+                        $("#images").append("" +
+                            "<a class=\"generated-link\" href=\"" + imgUrlHD + "\" target=\"_blank\" download>\n" +
+                            "<img class=\"generated-image\" src=\"" + imgUrl + "\" height='300'/>\n" +
+                            "</a>")
+
+                    });
+                }
+
+            });
+
+		</script>
+	</head>
+	<body>
+		<div id="images" />
+	</body>
+</html>
